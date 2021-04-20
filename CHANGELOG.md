@@ -7,6 +7,10 @@ Installation into your project is done with the [`npm install` command](https://
 
 # Changelog
 
+### 1.2.0
+
+- Added `useOnMount` hook.
+
 ### 1.0.2
 
 - Github Action Deployment fixes
