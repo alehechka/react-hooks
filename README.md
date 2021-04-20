@@ -1,10 +1,12 @@
 # Welcome to @alehechka/react-hooks
+
 [![Version](https://img.shields.io/npm/v/@alehechka/react-hooks.svg)](https://www.npmjs.com/package/@alehechka/react-hooks)
 
 A collection of useful hooks that I made for personal use, but feel free to include the package in your own projects or contribute! This is a [Node.js](https://nodejs.org/en/) package available through the [npm registry](https://nodejs.org/en/).
-You can install `@alehechka/react-hooks` with the [`yarn add` command](https://yarnpkg.com/cli/add). 
+You can install `@alehechka/react-hooks` with the [`yarn add` command](https://yarnpkg.com/cli/add).
 
 # Install
+
 ```sh
 yarn add @alehechka/react-hooks
 ```
@@ -12,24 +14,36 @@ yarn add @alehechka/react-hooks
 # Usage
 
 ### useToggle
+
 ```js
 const [value, toggle, turnOn, turnOff] = useToggle(); // defaults to false
 ```
-    
+
 You can also give it another default initial state:
 
 ```js
 const [value, toggle, turnOn, turnOff] = useToggle(true); // defaults to true
 ```
-    
-This implementation of useToggle is an extension from Josh Comeau's [implementation](https://www.joshwcomeau.com/snippets/react-hooks/use-toggle/) that includes some useful on/off functions. 
+
+This implementation of useToggle is an extension from Josh Comeau's [implementation](https://www.joshwcomeau.com/snippets/react-hooks/use-toggle/) that includes some useful on/off functions.
+
+### useOnMount
+
+```js
+useOnMount(() => {
+    handleMount();
+    return handleUnmount();
+})
+```
+
+This hook is a wrapper to `useEffect` that only acts as `componentDidMount` and `componentWillUnmount` from class-based React. The hook is effectively the same as using `useEffect` with an empty dependency array with the caveat that TypeScript won't yell at you to add dependencies or add the `eslint-disable` comment to your hook.
 
 # Author
 
 👤 **Adam Lehechka**
 
-* Website: [alehechka.github.io](https://alehechka.github.io/)
-* Github: [@alehechka](https://github.com/alehechka)
+- Website: [alehechka.github.io](https://alehechka.github.io/)
+- Github: [@alehechka](https://github.com/alehechka)
 
 # 🤝 Contributing
 
