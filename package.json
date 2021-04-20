@@ -26,17 +26,18 @@
   "peerDependencies": {
     "react": ">=16.8"
   },
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "yarn lint:fix",
+      "prettier --write"
+    ]
+  },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lint:fix"
+      "pre-commit": "lint-staged"
     }
   },
-  "prettier": {
-    "printWidth": 120,
-    "semi": true,
-    "singleQuote": true,
-    "trailingComma": "es5"
-  },
+  "prettier": "@alehechka/react-ts-config/.prettierrc.json",
   "name": "@alehechka/react-hooks",
   "author": "Adam Lehechka (https://github.com/alehechka)",
   "module": "dist/react-hooks.esm.js",
@@ -51,11 +52,14 @@
     }
   ],
   "devDependencies": {
+    "@alehechka/react-ts-config": "^1.0.6",
     "@size-limit/preset-small-lib": "^4.10.2",
     "@testing-library/react-hooks": "^5.1.1",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
     "husky": "^6.0.0",
+    "lint-staged": "^10.5.4",
+    "prettier": "^2.2.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "size-limit": "^4.10.2",
