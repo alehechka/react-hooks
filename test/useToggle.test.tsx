@@ -85,3 +85,37 @@ test('Should toggle from false to true explicitly', () => {
 	[value] = result.current;
 	expect(value).toBe(true);
 });
+
+test('Should toggle with params', () => {
+	const { result } = renderHook(() => useToggle(false));
+
+	let [value, toggle] = result.current;
+
+	act(() => {
+		toggle(true);
+	});
+
+	[value] = result.current;
+	expect(value).toBe(true);
+
+	act(() => {
+		toggle(false);
+	});
+
+	[value] = result.current;
+	expect(value).toBe(false);
+
+	act(() => {
+		toggle("false");
+	});
+
+	[value] = result.current;
+	expect(value).toBe(true);
+
+	act(() => {
+		toggle(1);
+	});
+
+	[value] = result.current;
+	expect(value).toBe(false);
+});
