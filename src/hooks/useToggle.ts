@@ -1,11 +1,12 @@
 import { useState, useCallback } from 'react';
 
-export type ToggleIndexes = [boolean, VoidFunction, VoidFunction, VoidFunction];
-
-export const useToggle = (initialState: boolean = false): ToggleIndexes => {
+export const useToggle = (initialState: boolean = false) => {
 	const [value, setValue] = useState<boolean>(initialState);
 
-	const toggle = useCallback(() => {
+	const toggle = useCallback((input?: boolean | any) => {
+		if (typeof input === 'boolean') {
+			return setValue(input);
+		}
 		setValue(v => !v);
 	}, []);
 
@@ -17,7 +18,7 @@ export const useToggle = (initialState: boolean = false): ToggleIndexes => {
 		setValue(true);
 	}, []);
 
-	return [value, toggle, turnOn, turnOff];
+	return [value, toggle, turnOn, turnOff] as const;
 };
 
 export default useToggle;
